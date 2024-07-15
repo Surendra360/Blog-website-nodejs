@@ -1,0 +1,34 @@
+<%- include("./partials/header") %>
+<%- include("./partials/nav") %>
+
+        <div class="w-[100%] flex flex-col items-center justify-center pb-10">
+            <div class="w-[60%] bg-teal-50 rounded-xl border shadow-xl p-5 flex items-center justify-between mt-10">
+                <div class="flex items-center gap-10">
+                    <div>
+                        <img class="w-[60px] h-[60px] rounded-full" src="https://imgs.search.brave.com/KJm5w-cbELGkNcYvZ6RLPOkg9y9vZK_xGQGWeDH31N8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9i/L2I2L1BlbmNpbF9k/cmF3aW5nX29mX2Ff/Z2lybF9pbl9lY3N0/YXN5LmpwZw" alt="">
+                        <h2 class="py-1"><%=user.name%></h2>
+                    </div>                    
+                    <div>
+                        <h2>@<%=user.username%></h2>
+                        <h2><%=user.email%></h2> 
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <h2>Blog</h2>
+                    <span>10</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <a href="/edit">
+                        <button class="px-2 py-1 bg-green-600 text-white font-semibold hover:bg-green-700 w-[5rem] m-1 rounded border">Edit</button>
+                    </a>
+                    <a href="/users/logout"> 
+                        <button class="px-2 py-1 bg-red-600 text-white font-semibold hover:bg-red-700 w-[5rem] m-1 rounded border">Logout</button>
+                    </a>
+                </div>
+            </div>
+            <button class="w-[60%] bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded border shadow-xl py-2 flex items-center justify-center mt-5">
+                Create new blog +
+            </button>
+        </div>
+
+<%- include("./partials/footer") %>

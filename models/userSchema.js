@@ -8,4 +8,5 @@ const userSchema = mongoose.Schema({
     password:String
 })
 userSchema.plugin(plm)
+
 module.exports = mongoose.model("user", userSchema);
