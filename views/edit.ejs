@@ -1,0 +1,38 @@
+<%- include("./partials/header") %>
+    <%- include("./partials/nav") %>
+
+        <div class="w-[100%] flex flex-col items-center justify-center mt-10 pb-10">
+            <div >
+                <h1 class="text-2xl font-bold border-2xl-black">Update User Details</h1>
+            </div>
+            <div class="w-[60%] bg-teal-50 rounded-xl shadow-xl border p-5 flex items-center justify-center mt-10">
+                <div class="w-[50%]">
+                    <img class="w-[20vw] h-[20vw] object-cover rounded-full" src="https://imgs.search.brave.com/KJm5w-cbELGkNcYvZ6RLPOkg9y9vZK_xGQGWeDH31N8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9i/L2I2L1BlbmNpbF9k/cmF3aW5nX29mX2Ff/Z2lybF9pbl9lY3N0/YXN5LmpwZw" alt="">
+                </div>
+
+                <form class="w-[40%] p-5 flex flex-col gap-5" action="/users/edit" method="post">
+                    <div class="flex flex-col gap-1">
+                        <label>Full Name</label>
+                        <input class="border-b border-gray-400 bg-teal-50 p-2 outline-0" type="text" name="name" value="<%=user.name%>">
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label>Username</label>
+                        <input class="border-b border-gray-400 bg-teal-50 p-2 outline-0" type="text" name="username" placeholder="abc123">
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label>Email</label>
+                        <input class="border-b border-gray-400 bg-teal-50 p-2 outline-0" type="email" name="email" placeholder="abc@gmail.com">
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label>Password</label>
+                        <input class="border-b border-gray-400 bg-teal-50 p-2 outline-0" type="Password" name="password" placeholder="********">
+                    </div>
+                      
+                    <button class="mt-5 bg-blue-500 py-2 rounded text-white font-semibold hover:bg-blue-600">Submit</button>
+
+                    <p>Alrady register - <a class="text-blue-600 hover:text-blue-700" href="/login">Login now</a></p>
+                </form>
+            </div>
+        </div>
+
+        <%- include("./partials/footer") %>

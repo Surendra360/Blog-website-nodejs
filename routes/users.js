@@ -46,4 +46,16 @@ router.get("/logout",isLoggedIn, (req,res,next)=>{
   })
 })
 
+
+router.get("/deletePost/:id", isLoggedIn, (req,res,next)=>{
+  userModel.findByIdAndDelete(req.params.id,(err)=>{
+    if(err){
+      res.send(err)
+    }else{
+        res.redirect("/users/profile")
+    }
+  })
+
+})
+
 module.exports = router;

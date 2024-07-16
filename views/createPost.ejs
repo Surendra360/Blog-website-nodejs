@@ -1,0 +1,32 @@
+<%- include("./partials/header") %>
+    <%- include("./partials/nav") %>
+
+        <div class="w-[100%] flex flex-col items-center justify-center mt-10 pb-10">
+            <div >
+                <h1 class="text-2xl font-bold border-2xl-black">Update User Details</h1>
+            </div>
+            <div class="w-[60%] bg-teal-50 rounded-xl shadow-xl border p-5 flex items-center justify-center mt-10">
+                <div class="w-[50%]">
+                    <img class="w-[25vw] h-[25vw] object-cover rounded" src="https://imgs.search.brave.com/KJm5w-cbELGkNcYvZ6RLPOkg9y9vZK_xGQGWeDH31N8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9i/L2I2L1BlbmNpbF9k/cmF3aW5nX29mX2Ff/Z2lybF9pbl9lY3N0/YXN5LmpwZw" alt="">
+                </div>
+
+                <form class="w-[40%] p-5 flex flex-col gap-5" action="/users/edit" method="post">
+                    <div class="flex flex-col gap-1">
+                        <label>Poster</label>
+                        <input class="bg-teal-50 p-2 outline-0" type="file" name="username">
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label>Title of Blog</label>
+                        <input class="border-b border-gray-400 bg-teal-50 p-2 outline-0" type="text" name="title" placeholder="Title">
+                    </div>
+                    <div class="flex flex-col gap-1">
+                        <label>Content</label>
+                        <textarea class="border border-gray-400 bg-teal-50 p-2 outline-0" type="text" name="content" placeholder="Write content here....." rows="5"></textarea>
+                    </div>
+                      
+                    <button class="mt-5 bg-blue-500 py-2 rounded text-white font-semibold hover:bg-blue-600">Upload</button>
+                </form>
+            </div>
+        </div>
+
+        <%- include("./partials/footer") %>
