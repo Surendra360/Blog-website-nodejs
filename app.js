@@ -5,6 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const expressfileUpload = require("express-fileupload")
 const db = require("./models/connect");
 db.connectionDB();
 const passport = require("passport")
@@ -26,6 +27,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(expressfileUpload()) 
 
 app.use(
   session({

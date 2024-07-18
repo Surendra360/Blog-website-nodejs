@@ -5,7 +5,7 @@
             <div class="w-[60%] bg-teal-50 rounded-xl border shadow-xl p-5 flex items-center justify-between mt-10">
                 <div class="flex items-center gap-10">
                     <div class="flex flex-col items-center">
-                        <img class="w-[60px] h-[60px] rounded-full" src="https://imgs.search.brave.com/KJm5w-cbELGkNcYvZ6RLPOkg9y9vZK_xGQGWeDH31N8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9i/L2I2L1BlbmNpbF9k/cmF3aW5nX29mX2Ff/Z2lybF9pbl9lY3N0/YXN5LmpwZw" alt="">
+                        <img class="w-[60px] h-[60px] rounded-full" src="<%=user.profileImage%>" alt="">
                         <h2>@<%=user.username%></h2>
                         <h2 class="py-1 text-lg font-semibold"><%=user.name%></h2>
                     </div>                    
@@ -15,7 +15,7 @@
                     <span>10 Blogs</span>
                 </div>
                 <div class="flex flex-col items-center">
-                    <a href="/edit">
+                    <a href="/users/editProfile">
                         <button class="px-2 py-1 bg-green-600 text-white font-semibold hover:bg-green-700 w-[5rem] m-1 rounded border">Edit</button>
                     </a>
                     <a href="/users/logout"> 
