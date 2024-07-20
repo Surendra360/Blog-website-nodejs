@@ -3,7 +3,7 @@ var router = express.Router();
 
 const { isLoggedIn } = require('../middleware/auth');
 
-const { profile, register, login, logout, editProfile, creatPost, deletePost } = require('../controllers/userControllers');
+const { profile, register, login, logout, editProfile, creatBlog, deletePost, update, newBlog,updateImg,deleteUser } = require('../controllers/userControllers');
 
 
 
@@ -17,9 +17,17 @@ router.post("/login", login);
 
 router.get("/logout",isLoggedIn, logout)
 
-router.get("/editProfile", isLoggedIn, editProfile)
+router.get("/editProfile/:id", isLoggedIn, editProfile)
 
-router.get("/createPost", isLoggedIn, creatPost);
+router.post("/update/:id",isLoggedIn, update)
+
+router.post("/updateImg/:id", isLoggedIn, updateImg)
+
+router.get("/creatBlog", isLoggedIn, creatBlog);
+
+router.post("/creatBlog", isLoggedIn, newBlog);
+
+router.get("/deleteUser/:id", isLoggedIn, deleteUser)
 
 router.get("/deletePost/:id", isLoggedIn, deletePost)
 

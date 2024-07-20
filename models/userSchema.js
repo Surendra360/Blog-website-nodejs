@@ -12,6 +12,10 @@ const userSchema = mongoose.Schema({
     username:String,
     email:String,
     password:String,
+    updateImg:{
+        type:String,
+        url:"",
+    }
 })
 
 userSchema.plugin(plm)

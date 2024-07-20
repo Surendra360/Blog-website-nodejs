@@ -2,28 +2,33 @@
 <%- include("./partials/nav") %>
 
         <div class="w-[100%] flex flex-col items-center justify-center pb-10">
-            <div class="w-[60%] bg-teal-50 rounded-xl border shadow-xl p-5 flex items-center justify-between mt-10">
-                <div class="flex items-center gap-10">
+            <div class="w-[60%] bg-teal-50 rounded-xl border shadow-xl p-5 flex flex-col items-center justify-between mt-5">
+                <div>
+                    <img class="w-[100px] h-[100px] border rounded-full object-cover object-center" src="<%=user.profileImage%>" alt="">
+                    <h2 class="py-1 text-xl font-semibold"><%=user.name%></h2>   
+                </div>
+                <div class="w-[100%] border-t border-gray-400 pt-5 flex items-center justify-between mt-5">
+                    <div class="flex items-center gap-10">
+                        <div class="flex flex-col gap-1">
+                            <h2 class="font-semibold">@<%=user.username%></h2>
+                            <h2><%=user.email%></h2>
+                        </div>                    
+                    </div>
                     <div class="flex flex-col items-center">
-                        <img class="w-[60px] h-[60px] rounded-full" src="<%=user.profileImage%>" alt="">
-                        <h2>@<%=user.username%></h2>
-                        <h2 class="py-1 text-lg font-semibold"><%=user.name%></h2>
-                    </div>                    
-                </div>
-                <div class="flex flex-col items-center">
-                    <h2 class="text-lg font-semibold">Total</h2>
-                    <span>10 Blogs</span>
-                </div>
-                <div class="flex flex-col items-center">
-                    <a href="/users/editProfile">
-                        <button class="px-2 py-1 bg-green-600 text-white font-semibold hover:bg-green-700 w-[5rem] m-1 rounded border">Edit</button>
-                    </a>
-                    <a href="/users/logout"> 
-                        <button class="px-2 py-1 bg-red-600 text-white font-semibold hover:bg-red-700 w-[5rem] m-1 rounded border">Logout</button>
-                    </a>
+                        <h2 class="text-lg font-semibold">Total</h2>
+                        <span>10 Blogs</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <a href="/users/editProfile/<%=user._id%>">
+                            <button class="px-2 py-1 bg-green-600 text-white font-semibold hover:bg-green-700 w-[5rem] m-1 rounded border">Edit</button>
+                        </a>
+                        <a href="/users/logout"> 
+                            <button class="px-2 py-1 bg-red-600 text-white font-semibold hover:bg-red-700 w-[5rem] m-1 rounded border">Logout</button>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <a class="w-[60%] bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded border shadow-xl py-2 flex items-center justify-center mt-5" href="/createPost">
+            <a class="w-[60%] bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded border shadow-xl py-2 flex items-center justify-center mt-5" href="/users/creatBlog">
                 <button > Create new blog + </button>
             </a>
             <div class="w-[60%] font-semibold py-2 flex flex-col items-center justify-center mt-5">

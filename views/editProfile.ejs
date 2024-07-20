@@ -7,31 +7,36 @@
             </div>
             <div class="w-[60%] bg-teal-50 rounded-xl shadow-xl border p-5 flex items-center justify-center mt-10">
                 <div class="w-[50%]">
-                    <img class="w-[20vw] h-[20vw] object-cover rounded-full" src="https://imgs.search.brave.com/KJm5w-cbELGkNcYvZ6RLPOkg9y9vZK_xGQGWeDH31N8/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9i/L2I2L1BlbmNpbF9k/cmF3aW5nX29mX2Ff/Z2lybF9pbl9lY3N0/YXN5LmpwZw" alt="">
-                </div>
+                    <img class="w-[20vw] h-[20vw] object-cover rounded-full" src="<%=user.profileImage%>" alt="">
 
-                <form class="w-[40%] p-5 flex flex-col gap-5" action="/users/edit-profile" method="post">
+                    <form action="/users/updateImg/<%=user._id%>" method="post" enctype="multipart/form-data">
+                        <input type="file" name="avtar">
+                        <button>Submit</button>
+                    </form>
+                    
+                </div>
+                
+                <form class="w-[40%] p-5 flex flex-col gap-5" action="/users/update/<%=user._id%>" method="post">
                     <div class="flex flex-col gap-1">
                         <label>Full Name</label>
-                        <input class="border-b border-gray-400 bg-teal-50 p-2 outline-0" type="text" name="name" value="<%=user.name%>">
+                        <input class="border-b border-gray-400 bg-teal-50 p-2 outline-0" type="text" name="name" placeholder="abc" value="<%=user.name%>">
                     </div>
                     <div class="flex flex-col gap-1">
                         <label>Username</label>
-                        <input class="border-b border-gray-400 bg-teal-50 p-2 outline-0" type="text" name="username" placeholder="abc123">
+                        <input class="border-b border-gray-400 bg-teal-50 p-2 outline-0" type="text" name="username" placeholder="abc123" value = "<%=user.username%>">
                     </div>
                     <div class="flex flex-col gap-1">
                         <label>Email</label>
-                        <input class="border-b border-gray-400 bg-teal-50 p-2 outline-0" type="email" name="email" placeholder="abc@gmail.com">
-                    </div>
-                    <div class="flex flex-col gap-1">
-                        <label>Password</label>
-                        <input class="border-b border-gray-400 bg-teal-50 p-2 outline-0" type="Password" name="password" placeholder="********">
+                        <input class="border-b border-gray-400 bg-teal-50 p-2 outline-0" type="email" name="email" placeholder="abc@gmail.com" value = "<%=user.email%>">
                     </div>
                       
-                    <button class="mt-5 bg-blue-500 py-2 rounded text-white font-semibold hover:bg-blue-600">Submit</button>
+                    <button class="mt-5 bg-blue-500 py-2 rounded text-white font-semibold hover:bg-blue-600">Update</button>
 
-                    <p>Alrady register - <a class="text-blue-600 hover:text-blue-700" href="/login">Login now</a></p>
+                    <p> Update Password - <a class="text-red-700 hover:text-red-600" href="#">Reset Password</a></p>
                 </form>
+            </div>
+            <div class="w-[60%] text-center mt-10">
+                <a href="/users/deleteUser/<%=user._id%>"><button  class="w-full bg-red-600 hover:bg-red-700 rounded shadow-xl text-white font-semibold py-2">Parmanently delete account</button></a>
             </div>
         </div>
 
