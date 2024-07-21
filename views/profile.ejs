@@ -16,7 +16,7 @@
                     </div>
                     <div class="flex flex-col items-center">
                         <h2 class="text-lg font-semibold">Total</h2>
-                        <span>10 Blogs</span>
+                        <span><%=user.blogs.length%></span>
                     </div>
                     <div class="flex flex-col items-center">
                         <a href="/users/editProfile/<%=user._id%>">
@@ -31,55 +31,26 @@
             <a class="w-[60%] bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded border shadow-xl py-2 flex items-center justify-center mt-5" href="/users/creatBlog">
                 <button > Create new blog + </button>
             </a>
-            <div class="w-[60%] font-semibold py-2 flex flex-col items-center justify-center mt-5">
-                <div class="w-[100%] h-[15vw] font-semibold rounded border shadow-xl py-2 px-2 flex items-center justify-center mt-5">
-                    <img class="w-[15vw] h-full object-cover rounded" src="https://letsenhance.io/static/03620c83508fc72c6d2b218c7e304ba5/11499/UpscalerAfter.jpg" alt="">
-                    <div class="h-full px-5 flex flex-col items-start justify-top gap-3">
-                        <h1 class="text-3xl flex items-center justify-between w-full"><div>Title of the blog</div><div><a href="#">...</a></div></h1>
-                        <span><%=Date()%></span>
-                        <p class="text-gray-600 font-[400]">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Dolorum impedit et eligendi dolor amet in eos nulla repellendus est voluptate dolorem suscipit quasi fugit nihil,
-                            quos incidunt sed, voluptas cum!
-                        </p>
-                        <div class="w-full flex justify-between">
-                            <span>Comments: 10</span>
-                            <a class="text-blue-600 hover:text-blue-700" href="#">Read more..</a>
+            
+            <div class="w-[60%] font-semibold py-2 flex flex-col items-center justify-center gap-5 mt-5">
+                <%user.blogs.forEach((blog)=>{%>
+                    <div class="w-[100%] h-[15vw] font-semibold rounded border shadow-xl py-2 px-2 flex items-center justify-start mt-5">
+                        <img class="w-[15vw] h-full object-cover rounded" src="<%=blog.blogPoster%>" alt="">
+                        <div class="h-full w-full px-5 py-2 flex flex-col items-start justify-between gap-3">
+                            <div class="w-full">
+                                <h1 class="text-3xl flex items-center justify-between w-full"><div><%=blog.blogTitle%></div><div><a class="text-red-600 text-sm" href="#">Delete</a></div></h1>
+                                <span><%=blog.createdat%></span>
+                            </div>
+                            <p class="text-gray-600 font-[400]">
+                               <%=blog.blogContent%>
+                            </p>
+                            <div class="w-full flex justify-between">
+                                <span>Comments: 10</span>
+                                <a class="text-blue-600 hover:text-blue-700" href="/blogReadMore">Read more..</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="w-[100%] h-[15vw] font-semibold rounded border shadow-xl py-2 px-2 flex items-center justify-center mt-5">
-                    <img class="w-[15vw] h-full object-cover rounded" src="https://d38b044pevnwc9.cloudfront.net/cutout-nuxt/enhancer/3.jpg" alt="">
-                    <div class="h-full px-5 flex flex-col items-start justify-top gap-3">
-                        <h1 class="text-3xl">Title of the blog</h1>
-                        <span><%=Date()%></span>
-                        <p class="text-gray-600 font-[400]">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Dolorum impedit et eligendi dolor amet in eos nulla repellendus est voluptate dolorem suscipit quasi fugit nihil,
-                            quos incidunt sed, voluptas cum!
-                        </p>
-                        <div class="w-full flex justify-between">
-                            <span>Comments: 10</span>
-                            <a class="text-blue-600 hover:text-blue-700" href="#">Read more..</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-[100%] h-[15vw] font-semibold rounded border shadow-xl py-2 px-2 flex items-center justify-center mt-5">
-                    <img class="w-[15vw] h-full object-cover rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSckP-ibR3ZL8I7wXymVCyLBjoaCPXntXZMNRCuaahwQVXm8vn1ptwMY-4hOueUduCWGKA&usqp=CAU" alt="">
-                    <div class="h-full px-5 flex flex-col items-start justify-top gap-3">
-                        <h1 class="text-3xl">Title of the blog</h1>
-                        <span><%=Date()%></span>
-                        <p class="text-gray-600 font-[400]">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Dolorum impedit et eligendi dolor amet in eos nulla repellendus est voluptate dolorem suscipit quasi fugit nihil,
-                            quos incidunt sed, voluptas cum!
-                        </p>
-                        <div class="w-full flex justify-between">
-                            <span>Comments: 10</span>
-                            <a class="text-blue-600 hover:text-blue-700" href="#">Read more..</a>
-                        </div>
-                    </div>
-                </div>
+                <%})%>
             </div>
         </div>
 

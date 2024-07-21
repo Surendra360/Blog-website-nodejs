@@ -15,7 +15,11 @@ const userSchema = mongoose.Schema({
     updateImg:{
         type:String,
         url:"",
-    }
+    },
+    blogs: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "blog"
+    }]
 })
 
 userSchema.plugin(plm)

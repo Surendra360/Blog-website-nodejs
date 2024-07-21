@@ -1,26 +1,38 @@
 <%- include("./partials/header") %>
 <%- include("./partials/nav") %>
-  <div class=" flex flex-col items-center justify-center gap-10 mt-10">
 
-    <h1 class="text-2xl font-bold border-b border-black">Home</h1>
-    <p class="w-[60%]">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius explicabo sint id, pariatur eveniet dolorem, eos architecto quidem consequatur atque ducimus error. Sapiente necessitatibus quia voluptates eius beatae labore! Natus?</p>
-    <button>Explore</button>
+  <div class="w-screen flex flex-col items-center justify-center">
+    <div class="w-[60%] font-semibold py-2 flex flex-col items-center justify-center gap-5 mt-5">
+      <%allBlogs.forEach((blogs)=>{%>
 
-    <div class="w-[70%] h-[15vw] font-semibold rounded border shadow-xl py-2 px-2 flex items-center justify-center mt-5">
-      <img class="w-[15vw] h-full object-cover rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSckP-ibR3ZL8I7wXymVCyLBjoaCPXntXZMNRCuaahwQVXm8vn1ptwMY-4hOueUduCWGKA&usqp=CAU" alt="">
-      <div class=" h-full px-5 flex flex-col items-start justify-top gap-3">
-          <h1 class="text-3xl">Title of the blog</h1>
-          <span><%=Date()%></span>
-          <p class="text-gray-600 font-[400]">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Dolorum impedit et eligendi dolor amet in eos nulla repellendus est voluptate dolorem suscipit quasi fugit nihil,
-              quos incidunt sed, voluptas cum!
-          </p>
-          <div class="w-full flex justify-between">
+        <div
+          class="w-[100%] h-[15vw] font-semibold rounded border shadow-xl py-2 px-2 flex items-center justify-start mt-5">
+          <img class="w-[15vw] h-full object-cover rounded" src="<%=blogs.blogPoster%>" alt="">
+          <div class="h-full w-full px-5 py-2 flex flex-col items-start justify-between gap-3">
+            <div class="w-full">
+              <h1 class="text-3xl flex items-center justify-between w-full">
+                <div>
+                  <%=blogs.blogTitle%>
+                </div>
+                <div><a class="text-red-600 text-sm" href="#">Delete</a></div>
+              </h1>
+              <span>
+                <%=blogs.createdat%>
+              </span>
+            </div>
+            <p class="text-gray-600 font-[400]">
+              <%=blogs.blogContent%>
+            </p>
+            <div class="w-full flex justify-between">
               <span>Comments: 10</span>
-              <a class="text-blue-600 hover:text-blue-700" href="#">Read more..</a>
+              <a class="text-blue-600 hover:text-blue-700" href="/blogReadMore">Read more..</a>
+            </div>
           </div>
-      </div>
+        </div>
+
+        <%})%>
+
+    </div>
   </div>
-  </div>
+
 <%- include("./partials/footer") %>

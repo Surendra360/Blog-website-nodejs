@@ -1,4 +1,5 @@
 const userModel = require("../models/userSchema")
+const blogModel = require("../models/blogSchema")
 
 const passport = require("passport");
 const imagekit = require("../utils/imagekit");
@@ -7,8 +8,9 @@ const LocalStrategy = require("passport-local").Strategy;
 
 passport.use(new LocalStrategy(userModel.authenticate()));
 
-exports.profile = (req, res, next) => {
-  res.render("profile", { user: req.user });
+exports.profile = async(req, res, next) => {
+  const user = await userModel.findById(req.user._id).populate("blogs")
+  res.render("profile", { user });
 }
 
 exports.register = async (req, res, next) => {
@@ -77,16 +79,6 @@ exports.update = async (req, res, next) => {
 }
 
 
-exports.creatBlog = (req, res, next) => {
-  res.render("createBlog")
-}
-
-exports.newBlog = (req, res, next) => {
-  poster: req.files.poster
-  title: req.body.title
-  content: req.body.content
-}
-
 exports.deletePost = (req, res, next) => {
   userModel.findByIdAndDelete(req.params.id, (err) => {
     if (err) {
@@ -106,3 +98,54 @@ exports.deleteUser = async(req, res, next) => {
     console.log(error.message);
   }
 }
+
+// exports.creatBlog = (req, res, next) => {
+//   res.render("createBlog", {user:req.user})
+// }
+
+// exports.newBlog = async (req, res, next) => {
+//   try {
+
+//     const newBlog = new blogModel({
+//       blogPoster: req.body.blogPoster,
+//       blogTitle: req.body.blogTitle,
+//       blogContent: req.body.blogContent,
+
+//       createdBy: req.user._id,
+//     });
+//     await newBlog.save()
+
+//     await req.user.blogs.push(newBlog._id);
+    
+//     await req.user.save();
+
+//     res.redirect("/users/profile")
+    
+//   } catch (error) {
+//     res.send(error.message)
+//   }
+// }
+
+exports.creatBlog = (req, res, next) => {
+  res.render("createBlog", { user: req.user });
+};
+
+exports.newBlog = async (req, res, next) => {
+  try {
+    const newBlog = new blogModel({
+      blogPoster: req.body.blogPoster,
+      blogTitle: req.body.blogTitle,
+      blogContent: req.body.blogContent,
+      createdBy: req.user._id,
+    });
+
+    await req.user.blogs.push(newBlog._id);
+    
+    await newBlog.save();
+    await req.user.save();
+
+    res.redirect("/users/profile");
+  } catch (error) {
+    res.send(error.message);
+  }
+};

@@ -23,12 +23,12 @@ router.post("/update/:id",isLoggedIn, update)
 
 router.post("/updateImg/:id", isLoggedIn, updateImg)
 
-router.get("/creatBlog", isLoggedIn, creatBlog);
-
-router.post("/creatBlog", isLoggedIn, newBlog);
-
 router.get("/deleteUser/:id", isLoggedIn, deleteUser)
 
 router.get("/deletePost/:id", isLoggedIn, deletePost)
+
+router.get("/creatBlog", isLoggedIn, creatBlog);
+
+router.post("/createBlog", isLoggedIn, newBlog);
 
 module.exports = router;
