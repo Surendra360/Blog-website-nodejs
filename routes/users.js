@@ -3,7 +3,7 @@ var router = express.Router();
 
 const { isLoggedIn } = require('../middleware/auth');
 
-const { profile, register, login, logout, editProfile, creatBlog, deletePost, update, newBlog,updateImg,deleteUser } = require('../controllers/userControllers');
+const { profile, register, login, logout, editProfile, creatBlog, deletePost, update, newBlog, updateImg, deleteUser, updateBlog } = require('../controllers/userControllers');
 
 
 
@@ -30,5 +30,7 @@ router.get("/deletePost/:id", isLoggedIn, deletePost)
 router.get("/creatBlog", isLoggedIn, creatBlog);
 
 router.post("/createBlog", isLoggedIn, newBlog);
+
+router.post("/updateBlog/:id", isLoggedIn, updateBlog)
 
 module.exports = router;

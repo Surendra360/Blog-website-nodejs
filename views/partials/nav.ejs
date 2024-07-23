@@ -1,15 +1,40 @@
-<nav class="flex items-center justify-between px-10 py-5 border-b bg-teal-50 shadow-xl">
+<nav class="w-full flex items-center justify-between px-5 py-5 border-b bg-teal-50 shadow-xl sm:px-10">
     <div>
-        <h1 class="text-2xl font-bold">Blog</h1>
+        <a href="/"><h1 class="text-2xl font-bold">Blog</h1></a>
     </div>
-    <div class="flex items-center justify-center gap-10">
+    <div class="hidden sm:flex items-center justify-center gap-10">
         <a href="/">Home</a>
         <a href="/users/creatBlog">Create Blog</a>
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
     </div>
-    <div class="flex items-center justify-center gap-5">
+    <%if(user){%>
+        <a href="/users/profile"><img class="w-12 h-12 rounded-full object-cover border border-gray-400" src="<%=user.profileImage%>" alt=""></a>
+    <%}else{%>
+        <div class="hidden sm:flex items-center justify-center gap-5">
+            <a class="px-3 py-1 border rounded bg-green-600 text-white" href="/login">Login</a>
+            <a class="px-3 py-1 border rounded bg-blue-600 text-white" href="/register">Register</a>
+        </div>
+        <%}%>
+        <button class="sm:hidden block text-2xl" id="menuButton">☰</button>
+</nav>
+
+<div class="sm:hidden w-full absolute py-5 h-40 bg-blue-500 flex flex-col items-center justify-center gap-5 hidden" id="mobileMenu">
+    <a href="/">Home</a>
+    <a href="/users/creatBlog">Create Blog</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+    <% if(!user) { %>
         <a class="px-3 py-1 border rounded bg-green-600 text-white" href="/login">Login</a>
         <a class="px-3 py-1 border rounded bg-blue-600 text-white" href="/register">Register</a>
-    </div>
-</nav>
+    <% } %>
+</div>
+
+<script>
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>

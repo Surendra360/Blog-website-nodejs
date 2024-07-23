@@ -4,7 +4,7 @@ const blogModel = require("../models/blogSchema")
 exports.index = async function (req, res, next) {
   const allBlogs = await blogModel.find();
   // console.log(allBlogs);
-    res.render("index", {allBlogs});
+    res.render("index", {allBlogs, user:req.user});
   }
 
   exports.register = (req, res, next) => {
@@ -16,6 +16,17 @@ exports.index = async function (req, res, next) {
   }
 
   exports.blogReadMore = async (req,res,next)=>{
-    // const user = await userModel.findById(req.user._id)
-    res.render("blogReadMore")
+    const blogData = await blogModel.findById(req.params.id)
+    console.log(blogData);
+    res.render("blogReadMore", {blogData, user:req.user})
+  }
+
+  exports.deleteBlog = async(req,res,next)=>{
+    await blogModel.findByIdAndDelete(req.params.id)
+    res.redirect("/users/profile")
+  }
+
+  exports.updateBlogs = async(req,res,next)=>{
+    const currentBlog = await blogModel.findById(req.params.id)
+    res.render("updateBlogs",{currentBlog, user:req.user})
   }

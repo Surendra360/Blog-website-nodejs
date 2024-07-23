@@ -1,21 +1,25 @@
 <%- include("./partials/header") %>
-<%- include("./partials/nav") %>
-  <div class=" flex flex-col items-center justify-center gap-10 mt-10">
-    <div class="w-[70%] font-semibold py-2 px-2 flex flex-col items-center justify-center mt-5">
-      <div class=" h-full px-5 flex items-center justify-top gap-5">
-        <img class="w-[30vw] h-full object-cover rounded" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSckP-ibR3ZL8I7wXymVCyLBjoaCPXntXZMNRCuaahwQVXm8vn1ptwMY-4hOueUduCWGKA&usqp=CAU" alt="">
-        <div>
-          <h1 class="text-3xl mb-5">title</h1>
-          <span><%=Date()%></span> 
-        </div>  
-      </div>
-      <div class="px-5 mt-5">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo fugit provident dolorum at totam culpa molestiae hic. Natus deserunt, cumque dolore quasi esse aperiam nobis officia perspiciatis expedita placeat dolorem!
-        </p>
-      </div>
+  <%- include("./partials/nav") %>
+    <div class="w-[100%] px-20 flex flex-col items-center justify-center gap-5 mt-10">
+      <h1 class="text-4xl w-full font-semibold"><%=blogData.blogTitle%></h1>
+      <div class="w-full font-semibold py-2 px-2 flex flex-col items-center justify-center mt-5">
+        <div class=" h-full w-full  items-start justify-top gap-5">
+          <img class="w-[30vw] h-full object-cover rounded"
+            src="<%=blogData.blogPoster%>"
+            alt="">
+            <span class="p-1 font-normal text-gray-500"><%= blogData.createdAt?.toString().slice(0,15) %></span>
+          
+        </div>
+        <div class="mt-10">
+          <p class="text-gray-600">
+            <%=blogData.blogContent%>
+          </p>
+        </div>
 
-      <a class="mt-10 px-3 py-1 bg-blue-500 text-white font-semibold rounded" href="/">Home</a>
-  </div>
-  </div>
-<%- include("./partials/footer") %>
+      </div>
+<div class="flex items-center justify-center gap-10 mt-10">
+  <a class=" px-3 py-1 bg-blue-500 text-white font-semibold rounded" href="/">Home</a>
+  <a class=" px-3 py-1 bg-blue-500 text-white font-semibold rounded" href="/users/profile">Profile</a>
+</div>
+    </div>
+    <%- include("./partials/footer") %>

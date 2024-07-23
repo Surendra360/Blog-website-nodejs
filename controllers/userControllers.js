@@ -99,33 +99,6 @@ exports.deleteUser = async(req, res, next) => {
   }
 }
 
-// exports.creatBlog = (req, res, next) => {
-//   res.render("createBlog", {user:req.user})
-// }
-
-// exports.newBlog = async (req, res, next) => {
-//   try {
-
-//     const newBlog = new blogModel({
-//       blogPoster: req.body.blogPoster,
-//       blogTitle: req.body.blogTitle,
-//       blogContent: req.body.blogContent,
-
-//       createdBy: req.user._id,
-//     });
-//     await newBlog.save()
-
-//     await req.user.blogs.push(newBlog._id);
-    
-//     await req.user.save();
-
-//     res.redirect("/users/profile")
-    
-//   } catch (error) {
-//     res.send(error.message)
-//   }
-// }
-
 exports.creatBlog = (req, res, next) => {
   res.render("createBlog", { user: req.user });
 };
@@ -149,3 +122,14 @@ exports.newBlog = async (req, res, next) => {
     res.send(error.message);
   }
 };
+
+
+exports.updateBlog = async(req,res,next)=>{
+  try {
+    const updateBlog = await blogModel.findByIdAndUpdate({_id: req.params.id},{...req.body})
+    await updateBlog.save()
+    res.redirect("/users/profile")
+  } catch (error) {
+    res.send(error.message)
+  }
+}

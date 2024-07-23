@@ -1,7 +1,7 @@
 <%- include("./partials/header") %>
 <%- include("./partials/nav") %>
 
-  <div class="w-screen flex flex-col items-center justify-center">
+  <div class="w-full flex flex-col items-center justify-center">
     <div class="w-[60%] font-semibold py-2 flex flex-col items-center justify-center gap-5 mt-5">
       <%allBlogs.forEach((blogs)=>{%>
 
@@ -12,20 +12,18 @@
             <div class="w-full">
               <h1 class="text-3xl flex items-center justify-between w-full">
                 <div>
-                  <%=blogs.blogTitle%>
+                  <%=blogs.blogTitle.slice(0,30)%>
                 </div>
-                <div><a class="text-red-600 text-sm" href="#">Delete</a></div>
               </h1>
-              <span>
-                <%=blogs.createdat%>
-              </span>
+              <span class="p-1 font-normal text-gray-500"><%= blogs.createdAt?.toString().slice(0,15) %></span>
+              
             </div>
             <p class="text-gray-600 font-[400]">
-              <%=blogs.blogContent%>
+              <%=blogs.blogContent.slice(0,250)%>....
             </p>
             <div class="w-full flex justify-between">
               <span>Comments: 10</span>
-              <a class="text-blue-600 hover:text-blue-700" href="/blogReadMore">Read more..</a>
+              <a class="text-blue-600 hover:text-blue-700" href="/blogReadMore/<%=blogs._id%>">Read more..</a>
             </div>
           </div>
         </div>

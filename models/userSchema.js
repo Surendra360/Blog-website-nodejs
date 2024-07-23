@@ -20,7 +20,7 @@ const userSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "blog"
     }]
-})
+},{timestamps:true})
 
 userSchema.plugin(plm)
 
